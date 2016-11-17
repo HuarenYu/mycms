@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <%- include('_head', { title: 'admin' }) %>
+</head>
+<body>
+    <%- include('_nav') %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"><a href="/admin/articles/add" class="btn btn-primary">add</a></div>
+            <div class="col-md-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>#id</th>
+                            <th>tile</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% articles.forEach(function(article) { %>
+                            <tr>
+                                <td><%= article.id %></td>
+                                <td><a href="/article/<%= article.id %>"><%= article.title %></a></td>
+                                <td><a href="/">edit</a>|<a href="/">delete</a></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <%- include('_footer') %>
+</body>
+</html>

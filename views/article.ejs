@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <%- include('_head', { title: article.title }) %>
+</head>
+<body>
+    <%- include('_nav') %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><%= article.title %></h2>
+                <hr>
+                <article><%- article.content %></article>
+            </div>
+        </div>
+    </div>
+    <%- include('_footer') %>
+</body>
+</html>
