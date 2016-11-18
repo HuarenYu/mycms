@@ -5,6 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
     title: DataTypes.STRING(512),
     content: DataTypes.TEXT,
+    threadId: DataTypes.INTEGER,
   }, {
     tableName: 't_Articles',
   });
