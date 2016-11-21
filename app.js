@@ -6,8 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 var admin = require('./routes/admin');
+var models = require('./models');
+var config = require('./config');
 
 var app = express();
 
@@ -23,8 +24,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// set global variables
+app.use(function(req, res, next) {
+  config.getConfigs().then(function(configs) {
+    res.locals.configs = configs;
+    next();
+  });
+});
+
 app.use('/', index);
-app.use('/users', users);
 app.use('/admin*', basicAuth);
 app.use('/admin', admin);
 

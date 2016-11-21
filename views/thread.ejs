@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <%- include('_head', { title: 'index' }) %>
+    <%- include('_head', { title: 'thread' }) %>
 </head>
 <body>
     <%- include('_nav') %>
@@ -10,12 +10,11 @@
         <div class="row">
             <div class="col-md-12">
                 <ul>
-                    <% articles.forEach(function(a) { %>
+                    <% articles.forEach(function(a) {%>
                         <li><a href="/article/<%= a.id %>"><%= a.title %></a></li>
                     <% }) %>
                 </ul>
             </div>
-            <%- include('_pagination', { pager: pager }) %>
         </div>
     </div>
     <%- include('_footer') %>

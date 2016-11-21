@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <%- include('_head', { title: 'add config' }) %>
+</head>
+<body>
+    <%- include('_nav') %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form role="form" action="/admin/configs/add" method="post">
+                  <div class="form-group">
+                    <label>site name</label>
+                    <input type="text" name="siteName" class="form-control" placeholder="name">
+                  </div>
+                  <div class="form-group">
+                    <label>site nav</label>
+                    <textarea name="siteNav" class="form-control"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include('_footer') %>
+</body>
+</html>
