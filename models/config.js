@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     siteNav: DataTypes.TEXT,
     siteMeta: DataTypes.STRING(512),
     siteDesc: DataTypes.STRING(512),
+    meta: DataTypes.TEXT,
   }, {
     tableName: 't_Configs',
   });

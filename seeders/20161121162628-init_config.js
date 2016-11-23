@@ -7,6 +7,7 @@ module.exports = {
         siteNav: '',
         siteMeta: '[]',
         siteDesc: '',
+        meta: '{"username":"admin","password":"admin"}',
       }], {});
   },
 

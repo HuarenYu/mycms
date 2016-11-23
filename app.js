@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // set global variables
 app.use(function(req, res, next) {
   config.getConfigs().then(function(configs) {
+    req.configs = configs;
     res.locals.configs = configs;
     next();
   });
@@ -73,7 +74,8 @@ function basicAuth(req, res, next) {
   var userInfo = tmp.toString().split(':');
   var name = userInfo[0];
   var pwd = userInfo[1];
-  if (name === 'test' && pwd === 'test') {
+  var meta = JSON.parse(req.configs.meta);
+  if (name === meta.username && pwd === meta.password) {
     next();
     return;
   }

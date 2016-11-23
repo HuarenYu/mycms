@@ -43,13 +43,20 @@ router.post('/threads/add', function(req, res, next) {
 });
 
 router.get('/configs/add', function(req, res, next) {
-    res.render('configs-add');
+    models.Config
+    .findOne({order:[['id','desc']]})
+    .then(function(result) {
+        res.render('configs-add', { configs: result });
+    });
 });
 
 router.post('/configs/add', function(req, res, next) {
     models.Config.create({
         siteName: req.body.siteName,
         siteNav: req.body.siteNav,
+        siteMeta: req.body.siteMeta,
+        siteDesc: req.body.siteDesc,
+        meta: req.body.meta,
     })
     .then(function(data) {
         return config.reloadConfigs();
