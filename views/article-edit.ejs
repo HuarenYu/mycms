@@ -9,10 +9,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form role="form" action="/admin/articles/add" method="post">
+                <form role="form" action="/admin/articles/edit" method="post">
                   <div class="form-group">
                     <label>Title</label>
-                    <input type="text" name="title" class="form-control" placeholder="Title">
+                    <input type="hidden" name="id" value="<%= article.id %>">
+                    <input type="text" name="title" class="form-control" placeholder="Title" value="<%= article.title %>">
                   </div>
                   <div class="form-group">
                     <label>Thread</label>
@@ -24,11 +25,11 @@
                   </div>
                   <div class="form-group">
                     <label>Meta</label>
-                    <textarea name="meta" class="form-control"></textarea>
+                    <textarea name="meta" class="form-control"><%= article.meta %></textarea>
                   </div>
                   <div class="form-group">
                     <label>Content</label>
-                    <textarea id="content" name="content"></textarea>
+                    <textarea id="content" name="content"><%= article.content %></textarea>
                   </div>
                   <button type="submit" class="btn btn-default">Submit</button>
                 </form>

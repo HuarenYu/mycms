@@ -11,6 +11,8 @@ module.exports.getConfigs = function() {
         models.Config.findOne({order:[['id','desc']]})
         .then(function(result) {
             configs = result;
+            configs.siteNav = JSON.parse(configs.siteNav) || [];
+            configs.meta = JSON.parse(configs.meta) || {};
             resolve(configs);
         });
     });
@@ -21,6 +23,8 @@ module.exports.reloadConfigs = function() {
         models.Config.findOne({order:[['id','desc']]})
         .then(function(result) {
             configs = result;
+            configs.siteNav = JSON.parse(configs.siteNav) || [];
+            configs.meta = JSON.parse(configs.meta) || {};
             resolve(configs);
         });
     });

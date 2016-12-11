@@ -74,7 +74,7 @@ function basicAuth(req, res, next) {
   var userInfo = tmp.toString().split(':');
   var name = userInfo[0];
   var pwd = userInfo[1];
-  var meta = JSON.parse(req.configs.meta);
+  var meta = req.configs.meta;
   if (name === meta.username && pwd === meta.password) {
     next();
     return;

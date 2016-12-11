@@ -8,14 +8,26 @@
     <%- include('_nav') %>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <ul>
-                    <% articles.forEach(function(a) { %>
-                        <li><a href="/article/<%= a.id %>"><%= a.title %></a></li>
-                    <% }) %>
-                </ul>
+            <% articles.forEach(function(a) { %>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <a href="/article/<%= a.id %>">
+                            <img src="<%= a.meta.cover %>" alt="<%= a.title %>">
+                        </a>
+                        <div class="caption">
+                            <h3><%= a.title %></h3>
+                            <p>
+                                <a href="/article/<%= a.id %>" class="btn btn-primary" role="button">detail</a>
+                            </p>
+                      </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <%- include('_pagination', { pager: pager }) %>
             </div>
-            <%- include('_pagination', { pager: pager }) %>
         </div>
     </div>
     <%- include('_footer') %>

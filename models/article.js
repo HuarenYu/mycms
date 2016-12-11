@@ -6,6 +6,7 @@ module.exports = function(sequelize, DataTypes) {
     title: DataTypes.STRING(512),
     content: DataTypes.TEXT,
     threadId: DataTypes.INTEGER,
+    meta: DataTypes.TEXT
   }, {
     tableName: 't_Articles',
   });

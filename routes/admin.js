@@ -13,7 +13,29 @@ router.get('/', function(req, res, next) {
 
 router.get('/articles/add', function(req, res, next) {
     models.Thread.findAll().then(function(threads) {
-        res.render('article-add', { threads: threads});
+        res.render('article-add', { threads: threads });
+    });
+});
+
+router.get('/articles/edit/:id', function(req, res, next) {
+    Promise.all([models.Thread.findAll(), models.Article.findById(req.params.id)])
+    .then(function(results) {
+        res.render('article-edit', { threads: results[0], article: results[1] });
+    });
+});
+
+router.post('/articles/edit', function(req, res, next) {
+    models.Article.findById(req.body.id)
+    .then(function(article) {
+        return article.update({
+            title: req.body.title,
+            content: req.body.content,
+            meta: req.body.meta,
+            threadId: req.body.threadId
+        });
+    })
+    .then(function(article) {
+        res.redirect('/admin');
     });
 });
 
@@ -21,6 +43,7 @@ router.post('/articles/add', function(req, res, next) {
     models.Article.create({
         title: req.body.title,
         content: req.body.content,
+        meta: req.body.meta,
         threadId: req.body.threadId
     })
     .then(function(data) {
@@ -46,7 +69,7 @@ router.get('/configs/add', function(req, res, next) {
     models.Config
     .findOne({order:[['id','desc']]})
     .then(function(result) {
-        res.render('configs-add', { configs: result });
+        res.render('configs-add', { oldConfigs: result });
     });
 });
 

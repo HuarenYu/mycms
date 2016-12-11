@@ -23,7 +23,7 @@
                             <tr>
                                 <td><%= article.id %></td>
                                 <td><a href="/article/<%= article.id %>"><%= article.title %></a></td>
-                                <td><a href="/">edit</a>|<a href="/">delete</a></td>
+                                <td><a href="/admin/articles/edit/<%= article.id %>">edit</a>|<a href="/admin/articles/delete/<%= article.id %>">delete</a></td>
                             </tr>
                         <% }) %>
                     </tbody>
